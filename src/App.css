@@ -3,3 +3,6 @@
   padding: 0;
 }
 
+body {
+  background-image: linear-gradient(to left top, #051937, #490b50, #eb5786, #8b0a4b);
+}

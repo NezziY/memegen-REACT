@@ -20,11 +20,18 @@ export const ConfigMeme = () => {
     }
 
     const descargar = (e) => {
-        html2canvas(document.getElementById("memeCreator")).then(function(canvas){
+        const element = document.getElementById("memeCreator");
+      
+        html2canvas(element, {
+          useCORS: true
+        }).then(function(canvas) {
+            
             let img = canvas.toDataURL("image/png");
+            
             let link = document.createElement('a');
             link.download = "1.jpg";
             link.href = img;
+
             link.click();
         });   
     }
@@ -59,8 +66,12 @@ export const ConfigMeme = () => {
                             <input className="form-control" onChange={onChangeLinea1} type="text" placeholder="Linea 1" />
                             <input className="form-control mt-3" onChange={onChangeLinea2} type="text" placeholder="Linea 2" />
                             <button className="btn btn-secondary my-3" onClick={descargar}>Descargar</button>
-                            <div className="meme-container" id="memeCreator">
-                                <img src={imagenSeleccionada} alt="" />
+                            <div className="meme-container" id="memeCreator" style={{width: '350px'}}>
+                                <img 
+                                src={imagenSeleccionada} 
+                                width="300"
+                                alt="" 
+                                />
                                 <span className="arriba">{linea1}</span>
                                 <span className="abajo">{linea2}</span>
                             </div>
